@@ -1,0 +1,308 @@
+/* Mood Dude website: one stylesheet for every page.
+   Colours are sampled from the games' own tiles; the page accent follows
+   the dude's mood (data-mood on <html>), like the ground does in the game. */
+
+@font-face { font-family: "Kenney Blocks"; src: url("fonts/kenney-blocks.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Kenney Future"; src: url("fonts/kenney-future.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("fonts/atkinson-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("fonts/atkinson-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("fonts/atkinson-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+	color-scheme: light;
+	--sky: #d0f4f7;
+	--hill: #c0e8ec;
+	--paper: #f4fbfc;
+	--panel: #ffffff;
+	--line: #b9dce1;
+	--ink: #1e3d44;
+	--ink-soft: #4a6870;
+
+	--green: #6fc4a9;  --green-ink: #21735a;
+	--blue: #8db5e7;   --blue-ink: #2f5f9e;
+	--red: #f19cb7;    --red-ink: #a83a62;
+	--yellow: #ffcc00; --yellow-ink: #7d6000;
+	--beige: #e0d1af;  --beige-ink: #6e5c36;
+
+	--mood: var(--green);
+	--mood-ink: var(--green-ink);
+
+	--display: "Kenney Future", "Atkinson Hyperlegible", system-ui, sans-serif;
+	--body: "Atkinson Hyperlegible", system-ui, sans-serif;
+	--gutter: clamp(16px, 4vw, 40px);
+	--measure: 68ch;
+}
+
+[data-mood="blue"]   { --mood: var(--blue);   --mood-ink: var(--blue-ink); }
+[data-mood="red"]    { --mood: var(--red);    --mood-ink: var(--red-ink); }
+[data-mood="yellow"] { --mood: var(--yellow); --mood-ink: var(--yellow-ink); }
+[data-mood="beige"]  { --mood: var(--beige);  --mood-ink: var(--beige-ink); }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font: 400 1.125rem/1.6 var(--body);
+	overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; }
+.pixel { image-rendering: pixelated; }
+
+a { color: var(--mood-ink); text-underline-offset: 0.18em; text-decoration-thickness: 2px; }
+a:hover { text-decoration-thickness: 3px; }
+
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+.skip {
+	position: absolute; left: var(--gutter); top: -100px;
+	background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 6px; z-index: 10;
+}
+.skip:focus { top: 12px; }
+
+/* ---------- header and footer ---------- */
+
+.top {
+	display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+	padding: 14px var(--gutter);
+	background: var(--sky);
+}
+.brand {
+	font: 1.35rem/1 "Kenney Blocks", var(--display);
+	color: var(--mood-ink); text-decoration: none; letter-spacing: 0.02em;
+	display: inline-flex; align-items: center; gap: 10px;
+}
+.brand img { width: 22px; }
+.brand img.pop { animation: brand-hop 320ms ease-out; }
+@keyframes brand-hop { 40% { transform: translateY(-6px); } }
+.top nav { display: flex; gap: 20px; margin-left: auto; }
+.top nav a {
+	font: 0.95rem/1 var(--display); color: var(--ink); text-decoration: none;
+	padding: 8px 2px; border-bottom: 3px solid transparent;
+}
+.top nav a:hover, .top nav a[aria-current] { border-bottom-color: var(--mood); }
+
+footer {
+	background: var(--ink); color: #d7ebee;
+	padding: 40px var(--gutter) 48px;
+	font-size: 1rem;
+}
+footer .inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px 64px; }
+footer h2 { font: 0.9rem/1.2 var(--display); color: #fff; margin: 0 0 12px; letter-spacing: 0.04em; }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+footer a { color: #fff; }
+footer .made { flex-basis: 100%; margin: 8px 0 0; color: #a9c8cd; }
+
+/* ---------- Kenney-style button: a face sitting on its own depth ---------- */
+
+.btn {
+	display: inline-flex; align-items: center; gap: 10px;
+	font: 1rem/1 var(--display); letter-spacing: 0.03em;
+	color: var(--ink); background: var(--panel); text-decoration: none;
+	padding: 13px 18px 11px; border-radius: 10px; border: 2px solid var(--ink);
+	box-shadow: 0 4px 0 var(--ink);
+	transition: transform 80ms, box-shadow 80ms;
+}
+.btn:hover { text-decoration: none; background: #fff; }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.play-badge { display: inline-block; line-height: 0; border-radius: 8px; }
+.play-badge img { height: 54px; width: auto; }
+
+/* ---------- home: hero ---------- */
+
+.hero { background: var(--sky); padding: 40px 0 0; }
+.hero-text { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); }
+.hero h1 {
+	font: clamp(2.6rem, 9vw, 6.5rem)/0.95 "Kenney Blocks", var(--display);
+	margin: 0; color: var(--mood);
+	text-shadow: 0 0.06em 0 var(--mood-ink);
+	transition: color 200ms, text-shadow 200ms;
+}
+.hero h1 span { display: block; }
+.hero .lede { max-width: 34em; font-size: clamp(1.1rem, 2.2vw, 1.3rem); margin: 22px 0 0; }
+
+.switcher { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 26px 0 18px; }
+.switcher .moods { display: flex; gap: 10px; }
+.mood-btn {
+	appearance: none; border: 0; padding: 0; background: none; cursor: pointer;
+	border-radius: 50%; line-height: 0; position: relative;
+	filter: grayscale(0.85) opacity(0.7);
+	transition: filter 150ms, transform 150ms;
+}
+.mood-btn img { width: 52px; height: 52px; border-radius: 50%; }
+.mood-btn:hover { filter: grayscale(0.3); }
+.mood-btn[aria-pressed="true"] { filter: none; transform: translateY(-3px); }
+.mood-btn[aria-pressed="true"]::after {
+	content: ""; position: absolute; left: 50%; bottom: -10px; width: 8px; height: 8px;
+	margin-left: -4px; border-radius: 50%; background: var(--ink);
+}
+.mood-btn kbd {
+	position: absolute; right: -4px; top: -4px;
+	font: 700 0.7rem/1 var(--body); background: var(--ink); color: #fff;
+	border-radius: 4px; padding: 3px 5px;
+}
+.switcher .hint { color: var(--ink-soft); font-size: 1rem; margin: 0; }
+
+.strip {
+	display: block; width: 100%; height: 232px; cursor: pointer;
+	touch-action: manipulation;
+}
+.strip:focus-visible { outline-offset: -6px; border-radius: 0; }
+.strip:focus:not(:focus-visible) { outline: none; }
+
+/* ---------- home: the games ---------- */
+
+.games { max-width: 1100px; margin: 0 auto; padding: 72px var(--gutter) 40px; }
+.games > h2 {
+	font: clamp(1.6rem, 4vw, 2.2rem)/1.1 var(--display);
+	margin: 0 0 8px;
+}
+.games > p { margin: 0 0 48px; color: var(--ink-soft); max-width: 40em; }
+
+.game {
+	--c: var(--green); --ci: var(--green-ink);
+	display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px;
+	align-items: start;
+	padding: 48px 0; border-top: 2px solid var(--line);
+}
+.game.flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.game.flip .shots { order: 2; }
+.game[data-c="blue"]  { --c: var(--blue);  --ci: var(--blue-ink); }
+.game[data-c="beige"] { --c: var(--beige); --ci: var(--beige-ink); }
+
+.game h3 {
+	font: clamp(1.5rem, 3.4vw, 2rem)/1.1 var(--display);
+	margin: 0 0 14px; color: var(--ink);
+	display: flex; align-items: center; gap: 14px;
+}
+.game h3 img { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+.game .tag {
+	display: inline-block; font: 700 0.85rem/1 var(--body);
+	background: var(--c); color: var(--ink); border-radius: 999px; padding: 6px 12px;
+	margin: 0 0 14px;
+}
+.game p { margin: 0 0 14px; }
+.game ul.facts { margin: 0 0 22px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.game ul.facts li { padding-left: 30px; position: relative; }
+.game ul.facts li::before {
+	content: ""; position: absolute; left: 0; top: 0.3em; width: 18px; height: 18px;
+	border-radius: 50%; background: var(--c); box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.12);
+}
+.game .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.shots img {
+	display: block; width: 100%; border-radius: 10px;
+	border: 3px solid var(--c); background: var(--sky);
+}
+.shots .main { grid-column: 1 / -1; }
+.shots img:not(.main) { aspect-ratio: 3 / 2; object-fit: cover; object-position: left top; }
+
+.game.soon .shots {
+	min-height: 180px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; padding: 24px;
+	border-radius: 10px; border: 3px dashed var(--line); background: var(--sky);
+}
+.game.soon .shots img { width: 64px; border: 0; border-radius: 50%; background: none; }
+
+/* ---------- privacy: shared document layout ---------- */
+
+.doc-head { background: var(--sky); padding: 48px var(--gutter) 40px; }
+.doc-head .inner, .doc-body > * { max-width: 720px; margin-left: auto; margin-right: auto; }
+.crumbs { font-size: 1rem; margin: 0 0 18px; color: var(--ink-soft); }
+.crumbs a { color: var(--ink-soft); }
+.doc-head h1 {
+	font: clamp(1.8rem, 5vw, 2.8rem)/1.1 var(--display);
+	margin: 0 0 6px;
+}
+.doc-head .for { font: 700 1.3rem/1.3 var(--body); margin: 0 0 18px; color: var(--mood-ink); }
+.effective {
+	display: inline-flex; align-items: center; gap: 10px;
+	background: var(--panel); border: 2px solid var(--ink); border-radius: 999px;
+	padding: 6px 14px; font-weight: 700; font-size: 1rem;
+}
+.effective::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--mood); }
+.doc-head .lede { margin: 20px 0 0; max-width: var(--measure); }
+
+.archived {
+	margin: 22px 0 0; padding: 14px 18px; border-radius: 10px;
+	background: #fff4c2; border: 2px solid var(--yellow-ink); color: var(--ink);
+}
+.archived strong { display: block; }
+
+.doc-body { padding: 40px var(--gutter) 72px; }
+
+.summary {
+	background: var(--panel); border: 2px solid var(--line); border-left: 8px solid var(--mood);
+	border-radius: 12px; padding: 20px 24px; margin-top: 0; margin-bottom: 40px;
+}
+.summary h2 { font: 700 1.25rem/1.3 var(--body); margin: 0 0 10px; }
+.summary ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+
+.toc { margin-top: 0; margin-bottom: 48px; }
+.toc h2 { font: 700 1.05rem/1.3 var(--body); margin: 0 0 8px; color: var(--ink-soft); }
+.toc ol { margin: 0; padding-left: 1.4em; columns: 2 16em; column-gap: 32px; }
+.toc li { break-inside: avoid; padding: 2px 0; }
+
+.policy h2 {
+	font: 700 1.5rem/1.25 var(--body); margin: 48px 0 12px; scroll-margin-top: 16px;
+	padding-top: 14px; border-top: 2px solid var(--line);
+}
+.policy > h2:first-child { margin-top: 0; }
+.policy h3 { font: 700 1.15rem/1.3 var(--body); margin: 28px 0 8px; }
+.policy p, .policy ul { margin: 0 0 14px; }
+.policy ul { padding-left: 1.2em; }
+.policy li { margin-bottom: 6px; }
+.policy code { font-size: 0.9em; background: var(--sky); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+
+.tablewrap { overflow-x: auto; margin: 0 0 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 1rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 2px solid var(--line); }
+th { font-weight: 700; color: var(--ink-soft); }
+td:first-child { white-space: nowrap; }
+tr[data-current] td { background: var(--panel); }
+
+.top-link { margin-top: 40px; font-size: 1rem; }
+
+/* ---------- privacy hub ---------- */
+
+.policies { list-style: none; margin-top: 0; margin-bottom: 0; padding: 0; display: grid; gap: 14px; }
+.policies li {
+	display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 18px; align-items: center;
+	background: var(--panel); border: 2px solid var(--line); border-radius: 12px; padding: 16px 18px;
+}
+.policies img { width: 56px; height: 56px; border-radius: 14px; grid-row: span 2; }
+.policies h2 { font: 700 1.2rem/1.3 var(--body); margin: 0; }
+.policies p { margin: 0; font-size: 1rem; color: var(--ink-soft); }
+.policies .pending { border-style: dashed; background: transparent; }
+
+/* ---------- the dude who wanders along the bottom (dude.js) ---------- */
+
+.walker {
+	position: fixed; left: 0; top: 0; z-index: 50;
+	appearance: none; border: 0; padding: 0; margin: 0; background: none;
+	line-height: 0; cursor: pointer; will-change: transform;
+	transition: opacity 200ms, visibility 200ms;
+}
+.walker img { display: block; image-rendering: pixelated; }
+.walker.away { opacity: 0; visibility: hidden; }
+.walker:focus-visible { outline-offset: 2px; }
+@media print { .walker { display: none; } }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 760px) {
+	.game, .game.flip { grid-template-columns: minmax(0, 1fr); }
+	.game.flip .shots { order: 0; }
+	.top nav { margin-left: 0; width: 100%; }
+	.strip { height: 200px; }
+	.mood-btn img { width: 46px; height: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after { transition: none !important; }
+	.brand img.pop { animation: none; }
+}

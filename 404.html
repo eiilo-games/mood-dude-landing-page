@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-mood="red">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page not found</title>
+<meta name="theme-color" content="#d0f4f7">
+<link rel="icon" href="/img/dude/red-hurt.png" type="image/png">
+<link rel="stylesheet" href="/style.css">
+<style>
+	/* style.css loads fonts relative to itself, so this page works at any depth. */
+	.lost { min-height: 70vh; display: grid; place-content: center; justify-items: start; gap: 18px; padding: 48px var(--gutter); background: var(--sky); }
+	.lost img { width: 80px; }
+	.lost h1 { font: clamp(1.8rem, 5vw, 2.6rem)/1.1 var(--display); margin: 0; }
+	.lost p { margin: 0; max-width: 32em; }
+</style>
+</head>
+<body>
+<header class="top">
+	<a class="brand" href="/"><img class="pixel" src="/img/dude/red-still.png" alt="" width="40" height="56">Mood Dude</a>
+	<nav aria-label="Site">
+		<a href="/#games">Games</a>
+		<a href="/privacy">Privacy</a>
+	</nav>
+</header>
+<main class="lost">
+	<img class="pixel" src="/img/dude/red-hurt.png" alt="" width="40" height="56">
+	<h1>No ground here</h1>
+	<p>There is no page at this address. It may have moved, or the link may have a typo.</p>
+	<p><a class="btn" href="/">Go to the home page</a></p>
+</main>
+<script src="/dude.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" data-mood="green">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mood Dude</title>
+<meta name="description" content="Mood Dude is a series of colour-switching platformers for Android: Mood Dude, Mood Dude: Infinity, and Mood Dude: Adventures, coming soon.">
+<link rel="canonical" href="https://mooddude.app/">
+<meta name="theme-color" content="#d0f4f7">
+<meta property="og:title" content="Mood Dude">
+<meta property="og:description" content="Run, jump, and change your mood. A series of colour-switching platformers for Android.">
+<meta property="og:image" content="https://mooddude.app/img/shots/mdi-run.webp">
+<link rel="icon" href="/img/dude/green-still.png" type="image/png">
+<link rel="preload" href="/fonts/kenney-blocks.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#games">Skip to the games</a>
+
+<header class="top">
+	<a class="brand" href="/"><img class="pixel" src="/img/dude/green-still.png" alt="" width="40" height="56">Mood Dude</a>
+	<nav aria-label="Site">
+		<a href="#games">Games</a>
+		<a href="/privacy">Privacy</a>
+	</nav>
+</header>
+
+<main>
+	<section class="hero" aria-labelledby="title">
+		<div class="hero-text">
+			<h1 id="title"><span>The Mood</span> <span>Dude</span></h1>
+			<p class="lede">Mood Dude runs on his own. You make him jump, and you change his mood: he can only walk on ground of his own colour, and he walks straight through walls that aren’t.</p>
+			<div class="switcher">
+				<div class="moods" role="group" aria-label="Change the dude’s mood">
+					<button class="mood-btn" type="button" data-mood="blue" aria-pressed="false"><img src="/img/moods/blue.png" alt="Blue" width="47" height="47"><kbd aria-hidden="true">1</kbd></button>
+					<button class="mood-btn" type="button" data-mood="red" aria-pressed="false"><img src="/img/moods/red.png" alt="Red" width="47" height="47"><kbd aria-hidden="true">2</kbd></button>
+					<button class="mood-btn" type="button" data-mood="green" aria-pressed="true"><img src="/img/moods/green.png" alt="Green" width="47" height="47"><kbd aria-hidden="true">3</kbd></button>
+				</div>
+				<p class="hint">Change his mood, then tap the ground to jump.</p>
+			</div>
+		</div>
+		<canvas class="strip" tabindex="0" role="img" aria-label="The dude running over ground in the colour of his mood. Tap or press Space to make him jump."></canvas>
+	</section>
+
+	<section class="games" id="games" aria-labelledby="games-title">
+		<h2 id="games-title">The games</h2>
+		<p>Three games, one dude. All of them are made by eiilo for Android phones and tablets.</p>
+
+		<article class="game" id="mood-dude" data-c="green" aria-labelledby="md-title">
+			<figure class="shots">
+				<img class="main" src="/img/shots/md-jump.webp" alt="The dude jumping over pink ground in the first level" width="960" height="640">
+				<img src="/img/shots/md-levels.webp" alt="The level selector: levels drawn as flying saucers" width="960" height="640" loading="lazy">
+				<img src="/img/shots/md-tutorial.webp" alt="The tutorial explaining how changing mood works" width="960" height="640" loading="lazy">
+				<img src="/img/shots/md-platforms.webp" alt="Sliding brick platforms over a long gap in level 18" width="960" height="640" loading="lazy">
+			</figure>
+			<div>
+				<h3 id="md-title"><img src="/img/icons/mood-dude.png" alt="" width="192" height="192">Mood Dude</h3>
+				<p class="tag">18 levels and a tutorial</p>
+				<p>The original. Every level is built by hand, from a gentle first run to sliding brick walls over long gaps. Collect a mood to unlock its colour, then switch between them to cross ground and walls.</p>
+				<ul class="facts">
+					<li>Plays offline, with no account to create.</li>
+					<li>Tap to jump, tap a mood to switch.</li>
+					<li>Picks up at the last level you reached.</li>
+				</ul>
+				<div class="actions">
+					<a class="play-badge" href="https://play.google.com/store/apps/details?id=com.eiilo.games.mooddude"><img src="/img/google-play.png" alt="Get Mood Dude on Google Play" width="270" height="80"></a>
+					<a href="/privacy/mood-dude">Privacy policy</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="game flip" id="infinity" data-c="blue" aria-labelledby="mdi-title">
+			<figure class="shots">
+				<img class="main" src="/img/shots/mdi-run.webp" alt="A run at a score of 196, with a pink wall ahead and a stock of moods at the top" width="960" height="640" loading="lazy">
+				<img src="/img/shots/mdi-enemies.webp" alt="Creatures on the track: a fly, slimes, a snail, a frog and a bee" width="960" height="640" loading="lazy">
+				<img src="/img/shots/mdi-trophies.webp" alt="The trophy list, with four of ten unlocked" width="960" height="640" loading="lazy">
+				<img src="/img/shots/mdi-far.webp" alt="Further along a run: tall green walls on blue ground" width="960" height="640" loading="lazy">
+			</figure>
+			<div>
+				<h3 id="mdi-title"><img src="/img/icons/mood-dude-infinity.png" alt="" width="192" height="192">Mood Dude: Infinity</h3>
+				<p class="tag">Endless, and always faster</p>
+				<p>The track is built as you run and never ends. Moods are a stock now: every pickup adds one, every switch spends one, so each change counts. Pits, walls in chains, sliding bricks and seven kinds of creature, from slimes to saw blades you can’t stomp.</p>
+				<ul class="facts">
+					<li>Beat your best score, then the leaderboard.</li>
+					<li>Ten trophies, through Google Play Games.</li>
+					<li>Music and sound made for the game.</li>
+				</ul>
+				<div class="actions">
+					<a class="play-badge" href="https://play.google.com/store/apps/details?id=com.eiilo.games.mooddudeinfinity"><img src="/img/google-play.png" alt="Get Mood Dude: Infinity on Google Play" width="270" height="80" loading="lazy"></a>
+					<a href="/privacy/mood-dude-infinity">Privacy policy</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="game soon" id="adventures" data-c="beige" aria-labelledby="mda-title">
+			<div class="shots" aria-hidden="true">
+				<img src="/img/moods/blue-blank.png" alt="" width="47" height="47">
+				<img src="/img/moods/red-blank.png" alt="" width="47" height="47">
+				<img src="/img/moods/green-blank.png" alt="" width="47" height="47">
+				<img src="/img/moods/yellow-blank.png" alt="" width="47" height="47">
+				<img src="/img/moods/beige-blank.png" alt="" width="47" height="47">
+			</div>
+			<div>
+				<h3 id="mda-title">Mood Dude: Adventures</h3>
+				<p class="tag">Coming soon</p>
+				<p>The next game in the series is in the works. It will be listed here, with its own privacy policy, before it comes out.</p>
+			</div>
+		</article>
+	</section>
+</main>
+
+<footer>
+	<div class="inner">
+		<div>
+			<h2>Games</h2>
+			<ul>
+				<li><a href="#mood-dude">Mood Dude</a></li>
+				<li><a href="#infinity">Mood Dude: Infinity</a></li>
+				<li><a href="#adventures">Mood Dude: Adventures</a></li>
+			</ul>
+		</div>
+		<div>
+			<h2>Privacy</h2>
+			<ul>
+				<li><a href="/privacy/mood-dude">Mood Dude</a></li>
+				<li><a href="/privacy/mood-dude-infinity">Mood Dude: Infinity</a></li>
+				<li><a href="/privacy/website">This website</a></li>
+				<li><a href="/privacy">All policies and past versions</a></li>
+			</ul>
+		</div>
+		<div>
+			<h2>Contact</h2>
+			<ul>
+				<li><a href="mailto:hi@eiilo.com">hi@eiilo.com</a></li>
+			</ul>
+		</div>
+		<p class="made">Made by eiilo games. Art by <a href="https://kenney.nl">Kenney</a>.</p>
+	</div>
+</footer>
+
+<script src="/strip.js" defer></script>
+<script src="/dude.js" defer></script>
+</body>
+</html>
