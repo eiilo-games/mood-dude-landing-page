@@ -102,3 +102,19 @@ Sprites, tiles, mood icons and the Kenney fonts come from the games and are
 Kenney's (CC0). Screenshots are captured with each game's
 `tools/screenshot.gd`. The ground tiles in `img/tiles/` are 64×32 crops of
 `mood-dude/assets/tiles/bricks.png`: a face tile, then a plain one.
+
+`img/social.png` is the 1200×630 share image (`og:image` on every page),
+cropped from `mdi-run.webp`:
+
+```sh
+magick img/shots/mdi-run.webp -resize 1200x800 -gravity south -crop 1200x630+0+0 +repage -strip img/social.png
+```
+
+## SEO
+
+Every indexable page has a title, description, canonical URL, Open Graph
+and Twitter card tags. The home page also has JSON-LD (`WebSite`,
+`Organization`, and a `VideoGame` + `MobileApplication` per released game);
+add one there when a game launches. `sitemap.xml` lists every current page,
+with the screenshots as image entries; bump a page's `lastmod` when you
+change it. Old policy versions stay out of it (they are `noindex`).

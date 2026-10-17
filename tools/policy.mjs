@@ -74,6 +74,7 @@ function newVersion(name, date, summary) {
 	let archive = html
 		.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">')
 		.replace(/\n<link rel="canonical"[^>]*>/, "")
+		.replace(/\n<meta property="og:url"[^>]*>/, "")
 		.replace(/<title>([^<]*)<\/title>/, `<title>$1 (${human(old)} version)</title>`)
 		.replace(/(<p class="crumbs">.*?)\s*\/\s*([^<\/]+)<\/p>/, `$1 / <a href="/privacy/${name}">$2</a> / ${human(old)}</p>`)
 		.replace(/(<p><time class="effective"[^\n]*<\/p>)/,
@@ -134,6 +135,7 @@ function check() {
 			const until = dayBefore(dates[i + 1]);
 			if (!/name="robots" content="noindex"/.test(a)) problems.push(`${rel(d + ".html")}: missing noindex`);
 			if (/rel="canonical"/.test(a)) problems.push(`${rel(d + ".html")}: an old version must not be canonical`);
+			if (/property="og:url"/.test(a)) problems.push(`${rel(d + ".html")}: an old version must not claim og:url`);
 			const e = a.match(EFFECTIVE);
 			if (!e || e[1] !== d) problems.push(`${rel(d + ".html")}: effective date does not match the file name`);
 			if (!a.includes(`in effect from ${human(d)} to ${human(until)}`)) problems.push(`${rel(d + ".html")}: archived notice should read "in effect from ${human(d)} to ${human(until)}"`);

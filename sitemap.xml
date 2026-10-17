@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 	<url>
 		<loc>https://mooddude.app/</loc>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-17</lastmod>
+		<image:image><image:loc>https://mooddude.app/img/social.png</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/md-jump.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/md-levels.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/md-tutorial.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/md-platforms.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/mdi-run.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/mdi-enemies.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/mdi-trophies.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/shots/mdi-far.webp</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/icons/mood-dude.png</image:loc></image:image>
+		<image:image><image:loc>https://mooddude.app/img/icons/mood-dude-infinity.png</image:loc></image:image>
 	</url>
 	<url>
 		<loc>https://mooddude.app/privacy/</loc>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-17</lastmod>
 	</url>
 	<url>
 		<loc>https://mooddude.app/privacy/mood-dude/</loc>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-17</lastmod>
 	</url>
 	<url>
 		<loc>https://mooddude.app/privacy/mood-dude-infinity/</loc>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-17</lastmod>
 	</url>
 	<url>
 		<loc>https://mooddude.app/privacy/website/</loc>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-17</lastmod>
 	</url>
 </urlset>
