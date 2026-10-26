@@ -1,18 +1,19 @@
 # Mood Dude — website
 
 The site for the Mood Dude series at `mooddude.app`: the three games (Mood
-Dude, Mood Dude: Infinity, Mood Dude: Adventures — coming soon), a privacy
+Dude, Mood Dude: Infinity, Mood Dude: Adventures), a privacy
 policy for each game and one for the site itself, with every past version
 kept online.
 
 Plain static files, no build step, no third-party requests. Served by GitHub
-Pages from the root of this repository. The games live in the `mood-dude`
-and `mood-dude-infinity` repositories.
+Pages from the root of this repository. The games live in the `mood-dude`,
+`mood-dude-infinity` and `mood-dude-adventures` repositories.
 
 ```
 index.html                  home: running-dude hero, the three games
 strip.js                    the hero's canvas: the dude runs, tap to jump, mood buttons recolour the ground
 dude.js                     the dude who wanders along the bottom of every page; click him or press 1/2/3 to change mood
+lightbox.js                 screenshot viewer: each .shots link opens a swipeable full-screen carousel of its game's shots
 style.css                   one stylesheet for every page
 /privacy/index.html          list of every policy, its effective date and version count
 /privacy/index.html<name>/index.html   the policy in effect (link this URL in Play Console)
@@ -25,7 +26,8 @@ app-ads.txt                 AdMob authorised-seller line; must be served at the 
 404.html, robots.txt, sitemap.xml, CNAME, .nojekyll
 ```
 
-Policies today: `mood-dude`, `mood-dude-infinity` and `website`.
+Policies today: `mood-dude`, `mood-dude-infinity`, `mood-dude-adventures`
+and `website`.
 
 ## Run locally
 
@@ -65,8 +67,8 @@ node tools/policy.mjs list    # each policy, its effective date and past version
 Publish the new policy before the app version that needs it ships, and
 update the Play Console Data safety form to match.
 
-To add a policy (Mood Dude: Adventures, say), copy `/privacy/mood-dude-infinity/index.html`
-to `/privacy/mood-dude-adventures/`, rewrite it with one `First version.` row,
+To add a policy for a new game, copy the closest existing policy
+to `/privacy/<name>/`, rewrite it with one `First version.` row,
 then add it to `/privacy/index.html` (with `data-policy` and `data-count`
 markers like the others), to `sitemap.xml`, and to the footers.
 
@@ -76,18 +78,28 @@ The tool relies on a few markers in each policy page; keep them when editing:
 
 ## Before going live
 
-- The Google Play buttons point at `com.eiilo.games.mooddude` and
-  `com.eiilo.games.mooddudeinfinity`, which 404 until each is published.
+- The Google Play buttons point at `com.eiilo.games.mooddude`,
+  `com.eiilo.games.mooddudeinfinity` and `com.eiilo.games.mooddudeadventures`,
+  which 404 until each is published.
+- The Adventures policy (26 October 2026, first version, rewritten before
+  it was ever published) covers AdMob ads (banners on the title, map and
+  store, interstitials, rewarded: continue, double coins, a free crystal
+  and a Daily Gift each once per 24 hours), the consent form behind the
+  gear on the title screen, Google Analytics for Firebase, Play Games
+  trophies from the trophy button (no leaderboard) and Play Billing
+  purchases, restored automatically at launch. Crash reporting or a
+  leaderboard would need a new version first (`tools/policy.mjs new`).
 - Both games show AdMob ads and use Google Analytics for Firebase; the
   policies describe that setup (the same as Trappy Flump). Check the ad
   placements and the consent ("privacy option in the app's settings")
   wording against the games once ads are in.
 - `app-ads.txt` holds the same eiilo AdMob publisher line as Trappy Flump.
   AdMob only checks the root of the developer website set in Play Console,
-  so set `https://mooddude.app` there for both games.
+  so set `https://mooddude.app` there for every game.
 - Paste each game's policy URL into its Play Console store listing:
-  `https://mooddude.app/privacy/mood-dude` and
-  `https://mooddude.app/privacy/mood-dude-infinity`.
+  `https://mooddude.app/privacy/mood-dude`,
+  `https://mooddude.app/privacy/mood-dude-infinity` and
+  `https://mooddude.app/privacy/mood-dude-adventures`.
 
 ## Deploy
 
@@ -100,7 +112,9 @@ logs" section of the website policy (with a new version).
 
 Sprites, tiles, mood icons and the Kenney fonts come from the games and are
 Kenney's (CC0). Screenshots are captured with each game's
-`tools/screenshot.gd`. The ground tiles in `img/tiles/` are 64×32 crops of
+`tools/screenshot.gd`. Adventures captures at 1152×648, so its `mda-*`
+shots are a 972×648 crop resized to 960×640 (`level@column` drops the dude
+mid-level; wait for the level-name card to fade first). The ground tiles in `img/tiles/` are 64×32 crops of
 `mood-dude/assets/tiles/bricks.png`: a face tile, then a plain one.
 
 `img/social.png` is the 1200×630 share image (`og:image` on every page),

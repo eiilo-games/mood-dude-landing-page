@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mood Dude: colour-switching platformer games for Android</title>
-<meta name="description" content="Mood Dude is a series of colour-switching platformers for Android: Mood Dude, Mood Dude: Infinity, and Mood Dude: Adventures, coming soon.">
+<meta name="description" content="Mood Dude is a series of colour-switching platformers for Android: Mood Dude, Mood Dude: Infinity, and Mood Dude: Adventures.">
 <link rel="canonical" href="https://mooddude.app/">
 <meta name="theme-color" content="#d0f4f7">
 <meta property="og:type" content="website">
@@ -77,6 +77,28 @@
 			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
 			"author": { "@id": "https://mooddude.app/#eiilo" },
 			"publisher": { "@id": "https://mooddude.app/#eiilo" }
+		},
+		{
+			"@type": ["VideoGame", "MobileApplication"],
+			"@id": "https://mooddude.app/#adventures",
+			"name": "Mood Dude: Adventures",
+			"url": "https://mooddude.app/#adventures",
+			"description": "A colour-switching platform adventure: 100 levels in 8 island worlds, with hidden stars, checkpoints and a boss at the end of each world. Ground and walls in your mood’s colour are solid and the others are ghosts.",
+			"genre": ["Platformer", "Adventure"],
+			"gamePlatform": "Android",
+			"operatingSystem": "Android",
+			"applicationCategory": "GameApplication",
+			"image": "https://mooddude.app/img/icons/mood-dude-adventures.png",
+			"screenshot": [
+				"https://mooddude.app/img/shots/mda-mood.webp",
+				"https://mooddude.app/img/shots/mda-map.webp",
+				"https://mooddude.app/img/shots/mda-boss.webp",
+				"https://mooddude.app/img/shots/mda-sky.webp"
+			],
+			"installUrl": "https://play.google.com/store/apps/details?id=com.eiilo.games.mooddudeadventures",
+			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+			"author": { "@id": "https://mooddude.app/#eiilo" },
+			"publisher": { "@id": "https://mooddude.app/#eiilo" }
 		}
 	]
 }
@@ -120,10 +142,10 @@
 
 		<article class="game" id="mood-dude" data-c="green" aria-labelledby="md-title">
 			<figure class="shots">
-				<img class="main" src="/img/shots/md-jump.webp" alt="The dude jumping over pink ground in the first level" width="960" height="640">
-				<img src="/img/shots/md-levels.webp" alt="The level selector: levels drawn as flying saucers" width="960" height="640" loading="lazy">
-				<img src="/img/shots/md-tutorial.webp" alt="The tutorial explaining how changing mood works" width="960" height="640" loading="lazy">
-				<img src="/img/shots/md-platforms.webp" alt="Sliding brick platforms over a long gap in level 18" width="960" height="640" loading="lazy">
+				<a class="main" href="/img/shots/md-jump.webp"><img src="/img/shots/md-jump.webp" alt="The dude jumping over pink ground in the first level" width="960" height="640"></a>
+				<a href="/img/shots/md-levels.webp"><img src="/img/shots/md-levels.webp" alt="The level selector: levels drawn as flying saucers" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/md-tutorial.webp"><img src="/img/shots/md-tutorial.webp" alt="The tutorial explaining how changing mood works" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/md-platforms.webp"><img src="/img/shots/md-platforms.webp" alt="Sliding brick platforms over a long gap in level 18" width="960" height="640" loading="lazy"></a>
 			</figure>
 			<div>
 				<h3 id="md-title"><img src="/img/icons/mood-dude.png" alt="" width="192" height="192">Mood Dude</h3>
@@ -143,10 +165,10 @@
 
 		<article class="game flip" id="infinity" data-c="blue" aria-labelledby="mdi-title">
 			<figure class="shots">
-				<img class="main" src="/img/shots/mdi-run.webp" alt="A run at a score of 196, with a pink wall ahead and a stock of moods at the top" width="960" height="640" loading="lazy">
-				<img src="/img/shots/mdi-enemies.webp" alt="Creatures on the track: a fly, slimes, a snail, a frog and a bee" width="960" height="640" loading="lazy">
-				<img src="/img/shots/mdi-trophies.webp" alt="The trophy list, with four of ten unlocked" width="960" height="640" loading="lazy">
-				<img src="/img/shots/mdi-far.webp" alt="Further along a run: tall green walls on blue ground" width="960" height="640" loading="lazy">
+				<a class="main" href="/img/shots/mdi-run.webp"><img src="/img/shots/mdi-run.webp" alt="A run at a score of 196, with a pink wall ahead and a stock of moods at the top" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/mdi-enemies.webp"><img src="/img/shots/mdi-enemies.webp" alt="Creatures on the track: a fly, slimes, a snail, a frog and a bee" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/mdi-trophies.webp"><img src="/img/shots/mdi-trophies.webp" alt="The trophy list, with four of ten unlocked" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/mdi-far.webp"><img src="/img/shots/mdi-far.webp" alt="Further along a run: tall green walls on blue ground" width="960" height="640" loading="lazy"></a>
 			</figure>
 			<div>
 				<h3 id="mdi-title"><img src="/img/icons/mood-dude-infinity.png" alt="" width="192" height="192">Mood Dude: Infinity</h3>
@@ -164,18 +186,27 @@
 			</div>
 		</article>
 
-		<article class="game soon" id="adventures" data-c="beige" aria-labelledby="mda-title">
-			<div class="shots" aria-hidden="true">
-				<img src="/img/moods/blue-blank.png" alt="" width="47" height="47">
-				<img src="/img/moods/red-blank.png" alt="" width="47" height="47">
-				<img src="/img/moods/green-blank.png" alt="" width="47" height="47">
-				<img src="/img/moods/yellow-blank.png" alt="" width="47" height="47">
-				<img src="/img/moods/beige-blank.png" alt="" width="47" height="47">
-			</div>
+		<article class="game" id="adventures" data-c="beige" aria-labelledby="mda-title">
+			<figure class="shots">
+				<a class="main" href="/img/shots/mda-mood.webp"><img src="/img/shots/mda-mood.webp" alt="The dude in a green mood on a bridge of green blocks, with a green wall ahead" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/mda-map.webp"><img src="/img/shots/mda-map.webp" alt="The map of Sunny Meadows, the first world, with a road joining its levels" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/mda-boss.webp"><img src="/img/shots/mda-boss.webp" alt="The boss fight against Baron Toad, a frog in a red mood" width="960" height="640" loading="lazy"></a>
+				<a href="/img/shots/mda-sky.webp"><img src="/img/shots/mda-sky.webp" alt="A bridge of blue blocks over a gap in the clouds" width="960" height="640" loading="lazy"></a>
+			</figure>
 			<div>
-				<h3 id="mda-title">Mood Dude: Adventures</h3>
-				<p class="tag">Coming soon</p>
-				<p>The next game in the series is in the works. It will be listed here before it comes out.</p>
+				<h3 id="mda-title"><img src="/img/icons/mood-dude-adventures.png" alt="" width="192" height="192">Mood Dude: Adventures</h3>
+				<p class="tag">100 levels in 8 worlds</p>
+				<p>A full platform adventure. This time you steer: walk, run, climb, swim and stomp across eight island worlds, from Sunny Meadows to Mood Castle. Ground and walls in your mood’s colour are solid and the others are ghosts, so switch mid-run, even mid-air, to cross coloured bridges and land on the right platforms.</p>
+				<ul class="facts">
+					<li>Three hidden mood stars and a checkpoint in every level.</li>
+					<li>A boss at the end of each world, hurt only in its own mood.</li>
+					<li>Skins and trails for the dude from the in-game store.</li>
+					<li>Sixteen trophies, through Google Play Games.</li>
+				</ul>
+				<div class="actions">
+					<a class="play-badge" href="https://play.google.com/store/apps/details?id=com.eiilo.games.mooddudeadventures"><img src="/img/google-play.png" alt="Get Mood Dude: Adventures on Google Play" width="270" height="80" loading="lazy"></a>
+					<a href="/privacy/mood-dude-adventures">Privacy policy</a>
+				</div>
 			</div>
 		</article>
 	</section>
@@ -196,6 +227,7 @@
 			<ul>
 				<li><a href="/privacy/mood-dude">Mood Dude</a></li>
 				<li><a href="/privacy/mood-dude-infinity">Mood Dude: Infinity</a></li>
+				<li><a href="/privacy/mood-dude-adventures">Mood Dude: Adventures</a></li>
 				<li><a href="/privacy/website">This website</a></li>
 				<li><a href="/privacy">All policies and past versions</a></li>
 			</ul>
@@ -212,5 +244,6 @@
 
 <script src="/strip.js" defer></script>
 <script src="/dude.js" defer></script>
+<script src="/lightbox.js" defer></script>
 </body>
 </html>
