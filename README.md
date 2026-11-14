@@ -2,8 +2,8 @@
 
 The site for the Mood Dude series at `mooddude.app`: the three games (Mood
 Dude, Mood Dude: Infinity, Mood Dude: Adventures), a privacy
-policy for each game and one for the site itself, with every past version
-kept online.
+policy for each game and one for the site itself, and terms and conditions
+for each game, with every past version kept online.
 
 Plain static files, no build step, no third-party requests. Served by GitHub
 Pages from the root of this repository. The games live in the `mood-dude`,
@@ -19,6 +19,10 @@ style.css                   one stylesheet for every page
 /privacy/index.html<name>/index.html   the policy in effect (link this URL in Play Console)
 /privacy/index.html<name>/<date>.html  earlier versions, named by the date they took effect (noindex)
 tools/policy.mjs            new policy versions, and a consistency check
+/terms/index.html           list of every game's terms, their effective date and version count
+/terms/<name>/index.html    the terms in effect (give this URL to the stores)
+/terms/<name>/<date>.html   earlier versions, named by the date they took effect (noindex)
+tools/terms.mjs             new terms versions, and a consistency check
 img/                        sprites, tiles and mood icons from the games, screenshots
 favicon.ico, apple-touch-icon.png   site icons; per-page square favicons in img/favicon/
 fonts/                      Kenney Blocks / Future (CC0) and Atkinson Hyperlegible (OFL), self-hosted
@@ -76,6 +80,47 @@ The tool relies on a few markers in each policy page; keep them when editing:
 `<time class="effective" datetime="…">`, `<tbody data-versions>` and the one
 `<tr data-current>` row.
 
+## Terms and conditions
+
+Each game has its own terms and conditions (French law; the publisher's
+trader details), kept exactly like the privacy policies: `terms/<name>/index.html`
+is the version in effect, each earlier version is archived next to it as
+`<its effective date>.html` (noindex), and `/terms/index.html` lists them all.
+The website itself has no terms. Terms today: `mood-dude`,
+`mood-dude-infinity` and `mood-dude-adventures`.
+
+Never edit a live version in place. Start a new version:
+
+```sh
+node tools/terms.mjs new mood-dude-adventures 2026-12-01 "Added a new pack."
+```
+
+This archives the current `index.html` as `<its effective date>.html`
+(`noindex`, no canonical or `og:url`, an "old version" notice where the
+`<!-- archived-notice -->` marker is), moves `index.html` to the new date,
+adds a row on top of its "Changes and past versions" table, and updates the
+date and version count on `/terms/index.html` and `lastmod` in
+`sitemap.xml`. Then edit `terms/<name>/index.html` with the new wording, and
+check:
+
+```sh
+node tools/terms.mjs check   # every archive linked, dates consistent, hub up to date, no placeholders left
+node tools/terms.mjs list    # each game's terms, effective date and past versions
+```
+
+Publish new terms before the app version that needs them ships (for
+example a new kind of purchase). The markers the tool relies on are listed at
+the top of `tools/terms.mjs`; keep them when editing: `<time
+class="effective" datetime="…">`, `<!-- archived-notice -->`, `<tbody
+data-versions>` with its one `<tr data-current>` row, and on the hub the
+`data-terms` and `data-count` markers.
+
+The URLs to give Google Play, App Store Connect (the EULA / licence
+agreement field) and the trader (EU DSA) declarations:
+`https://mooddude.app/terms/mood-dude`,
+`https://mooddude.app/terms/mood-dude-infinity` and
+`https://mooddude.app/terms/mood-dude-adventures`.
+
 ## Before going live
 
 - The Google Play buttons point at `com.eiilo.games.mooddude`,
@@ -96,6 +141,15 @@ The tool relies on a few markers in each policy page; keep them when editing:
 - `app-ads.txt` holds the same eiilo AdMob publisher line as Trappy Flump.
   AdMob only checks the root of the developer website set in Play Console,
   so set `https://mooddude.app` there for every game.
+- The terms pages still hold four placeholders: `[[TRADER_NAME]]`,
+  `[[TRADER_ADDRESS]]`, `[[TRADER_REGISTRATION]]` (the same trader details
+  as declared to Google Play and Apple) and `[[CONSUMER_MEDIATOR]]` (the
+  consumer mediator's name and website). `node tools/terms.mjs check` fails
+  until they are filled in, in all three games. The terms say they take
+  effect on 14 November 2026; as long as no archived version exists yet, that
+  date may be moved by hand to the real first-publication date (the
+  `<time class="effective">` line, the `(this version)` row, the hub's
+  `data-terms` date and the sitemap `lastmod`), then run `check`.
 - Paste each game's policy URL into its Play Console store listing:
   `https://mooddude.app/privacy/mood-dude`,
   `https://mooddude.app/privacy/mood-dude-infinity` and
@@ -131,4 +185,4 @@ and Twitter card tags. The home page also has JSON-LD (`WebSite`,
 `Organization`, and a `VideoGame` + `MobileApplication` per released game);
 add one there when a game launches. `sitemap.xml` lists every current page,
 with the screenshots as image entries; bump a page's `lastmod` when you
-change it. Old policy versions stay out of it (they are `noindex`).
+change it. Old policy and terms versions stay out of it (they are `noindex`).

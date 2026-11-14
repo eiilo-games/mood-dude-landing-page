@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 	<url>
 		<loc>https://mooddude.app/</loc>
-		<lastmod>2026-10-25</lastmod>
+		<lastmod>2026-11-14</lastmod>
 		<image:image><image:loc>https://mooddude.app/img/social.png</image:loc></image:image>
 		<image:image><image:loc>https://mooddude.app/img/shots/md-jump.webp</image:loc></image:image>
 		<image:image><image:loc>https://mooddude.app/img/shots/md-levels.webp</image:loc></image:image>
@@ -39,5 +39,21 @@
 	<url>
 		<loc>https://mooddude.app/privacy/website/</loc>
 		<lastmod>2026-10-17</lastmod>
+	</url>
+	<url>
+		<loc>https://mooddude.app/terms/</loc>
+		<lastmod>2026-11-14</lastmod>
+	</url>
+	<url>
+		<loc>https://mooddude.app/terms/mood-dude/</loc>
+		<lastmod>2026-11-14</lastmod>
+	</url>
+	<url>
+		<loc>https://mooddude.app/terms/mood-dude-infinity/</loc>
+		<lastmod>2026-11-14</lastmod>
+	</url>
+	<url>
+		<loc>https://mooddude.app/terms/mood-dude-adventures/</loc>
+		<lastmod>2026-11-14</lastmod>
 	</url>
 </urlset>
