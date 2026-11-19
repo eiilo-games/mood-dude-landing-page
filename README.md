@@ -23,7 +23,7 @@ tools/policy.mjs            new policy versions, and a consistency check
 /terms/<name>/index.html    the terms in effect (give this URL to the stores)
 /terms/<name>/<date>.html   earlier versions, named by the date they took effect (noindex)
 tools/terms.mjs             new terms versions, and a consistency check
-img/                        sprites, tiles and mood icons from the games, screenshots
+img/                        sprites, tiles and mood icons from the games, screenshots, the two store badges
 favicon.ico, apple-touch-icon.png   site icons; per-page square favicons in img/favicon/
 fonts/                      Kenney Blocks / Future (CC0) and Atkinson Hyperlegible (OFL), self-hosted
 app-ads.txt                 AdMob authorised-seller line; must be served at the domain root
@@ -155,6 +155,44 @@ agreement field) and the trader (EU DSA) declarations:
   `https://mooddude.app/privacy/mood-dude-infinity` and
   `https://mooddude.app/privacy/mood-dude-adventures`.
 
+## Store badges
+
+Every game is on both stores. Each game card has a `.stores` row with two
+badges, the App Store one first:
+
+- Mood Dude: `https://apps.apple.com/app/mood-dude-color-switch/id6829543306`
+  (on the App Store the game is called "Mood Dude: Color Switch", because
+  "Mood Dude" was taken; the card says so and the JSON-LD has it as
+  `alternateName`) and `com.eiilo.games.mooddude` on Google Play.
+- Mood Dude: Infinity: `https://apps.apple.com/app/mood-dude-infinity/id6829543585`
+  and `com.eiilo.games.mooddudeinfinity`.
+- Mood Dude: Adventures: `https://apps.apple.com/app/mood-dude-adventures/id6829543664`
+  and `com.eiilo.games.mooddudeadventures`.
+
+The App Store links carry no country code, so Apple sends each visitor to
+their own storefront. To check an app is live (the store page itself answers
+429 to `curl`): `curl -s "https://itunes.apple.com/lookup?id=6829543306&country=us"`.
+
+`img/app-store.svg` is Apple's own "Download on the App Store" badge (black,
+US-UK), downloaded unchanged from
+`https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg`
+and served from this site like everything else. `img/google-play.png` is
+Google's. The stores' badge rules, which `style.css` ("Store badges")
+follows: artwork unaltered, both badges the same height, the App Store badge
+first, clear space of a quarter of the badge height around it, never under
+40px tall. The pair shrinks together to stay on one row in a narrow column
+and stacks below a 44px height. The credit lines the stores ask for are in
+the home page footer (`.marks`).
+
+The iPhone and iPad versions have no Google Play Games (so no leaderboard,
+and trophies stay in the game's own list) and Adventures sells nothing for
+real money there. The cards say "on Android" wherever that matters; update
+them when an iOS update adds Game Center or purchases.
+
+The website policy's "Links to other sites" section names the store buttons:
+adding or removing a store is a new version of it
+(`node tools/policy.mjs new website <date> "…"`).
+
 ## Deploy
 
 GitHub Pages: Settings > Pages > Deploy from a branch, branch `main`, folder
@@ -182,7 +220,8 @@ magick img/shots/mdi-run.webp -resize 1200x800 -gravity south -crop 1200x630+0+0
 
 Every indexable page has a title, description, canonical URL, Open Graph
 and Twitter card tags. The home page also has JSON-LD (`WebSite`,
-`Organization`, and a `VideoGame` + `MobileApplication` per released game);
-add one there when a game launches. `sitemap.xml` lists every current page,
+`Organization`, and a `VideoGame` + `MobileApplication` per released game, with both
+platforms in `gamePlatform` and `operatingSystem` and both store links in
+`installUrl`); add one there when a game launches. `sitemap.xml` lists every current page,
 with the screenshots as image entries; bump a page's `lastmod` when you
 change it. Old policy and terms versions stay out of it (they are `noindex`).

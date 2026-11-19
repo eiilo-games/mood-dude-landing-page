@@ -96,6 +96,7 @@ footer h2 { font: 0.9rem/1.2 var(--display); color: #fff; margin: 0 0 12px; lett
 footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 footer a { color: #fff; }
 footer .made { flex-basis: 100%; margin: 8px 0 0; color: #a9c8cd; }
+footer .marks { flex-basis: 100%; margin: -16px 0 0; max-width: 62em; color: #a9c8cd; font-size: 0.85rem; line-height: 1.5; }
 
 /* ---------- Kenney-style button: a face sitting on its own depth ---------- */
 
@@ -109,8 +110,17 @@ footer .made { flex-basis: 100%; margin: 8px 0 0; color: #a9c8cd; }
 }
 .btn:hover { text-decoration: none; background: #fff; }
 .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
-.play-badge { display: inline-block; line-height: 0; border-radius: 8px; }
-.play-badge img { height: 54px; width: auto; }
+/* Store badges: the stores' own artwork, unaltered. Both stores' rules: the
+   same height for each, the App Store badge first, and clear space around it
+   of a quarter of its height. The pair shrinks together to stay on one row
+   (6.4 = the two badges' width-to-height ratios added up), down to a 44px
+   tap target; below that they stack. */
+.stores { display: flex; flex-wrap: wrap; gap: 14px; flex-basis: 100%; container-type: inline-size; }
+.store-badge { display: inline-block; line-height: 0; border-radius: 8px; }
+.store-badge img { height: 48px; width: auto; }
+@supports (height: 1cqi) {
+	.store-badge img { height: clamp(44px, calc((100cqi - 14px) / 6.4), 54px); }
+}
 
 /* ---------- home: hero ---------- */
 
